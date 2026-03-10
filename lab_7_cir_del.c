@@ -9,6 +9,67 @@ struct node
 
 struct node* head = NULL;
 
+void delatstart()
+{
+    if(head==NULL)
+    {
+        printf("The list iis emptu\n");
+        return;
+    }
+
+    struct node* temp=head;
+    head=head->next;
+
+    while(temp->next!=head)
+    {
+        temp=temp->next;
+    }
+    temp->next=head;
+    free(temp);
+}
+
+void delatend()
+{
+     if(head==NULL)
+    {
+        printf("The list iis emptu\n");
+        return;
+    }
+
+    struct node* temp=head;
+    while(temp->next->next!=head)
+    {
+        temp=temp->next;
+    }
+    temp->next=head;
+    free(temp->next->next);
+}
+
+void delatposition(int pos)
+{
+    if(pos<=1 || head==NULL)
+    {
+        void delatstart();
+
+    }
+    struct node* temp=head;
+    for(int i=0;i<pos-1 && temp->next!=head ; i++)
+    {
+        temp=temp->next;
+    }
+    struct node* delnod=temp->next;
+    temp->next=delnod->next;
+    free(delnod);
+    
+    
+}
+
+
+
+
+
+
+
 void main()
 {
     struct node *second = NULL, *third = NULL, *fourth = NULL, *fifth = NULL, *sixth = NULL;
@@ -42,7 +103,7 @@ void main()
 
     sixth->prev=fifth;
     sixth->data = 6;
-    sixth->next = NULL;
+    sixth->next = head;
 
 
     printf("Original list:\n");

@@ -87,12 +87,12 @@ int main(void)
 {
     struct node *second, *third, *fourth, *fifth, *sixth;
 
-    head   = malloc(sizeof *head);
-    second = malloc(sizeof *second);
-    third  = malloc(sizeof *third);
-    fourth = malloc(sizeof *fourth);
-    fifth  = malloc(sizeof *fifth);
-    sixth  = malloc(sizeof *sixth);
+    head   =  (struct Node*)malloc(sizeof(struct Node));
+    second =  (struct Node*)malloc(sizeof(struct Node));
+    third  =  (struct Node*)malloc(sizeof(struct Node));
+    fourth =  (struct Node*)malloc(sizeof(struct Node));
+    fifth  =  (struct Node*)malloc(sizeof(struct Node));
+    sixth  =  (struct Node*)malloc(sizeof(struct Node));
 
     head->data   = 1; head->next   = second;
     second->data = 2; second->next = third;
