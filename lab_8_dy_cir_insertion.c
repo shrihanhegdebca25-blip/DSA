@@ -62,6 +62,7 @@ void printList()
         printf("%d->",temp->data);
         temp=temp->next;
     }while(temp!=head);
+    printf("head");
 }
 
 void main()

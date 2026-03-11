@@ -11,6 +11,37 @@ struct node* tail=NULL;
 
 void delatstart()
 {
+    struct node* temp=head;
+    head=temp->next;
+    tail->next=head;
+    head->prev=tail;
+    free(temp);
+
+}
+
+void delatend()
+{
+    struct node* temp=head;
+    while(temp->next->next!=head)
+    {
+        temp=temp->next;
+    }
+    temp->next=head;
+    temp->next->prev=temp;
+    free(temp->next);
+}
+
+void delatanyposition(int pos)
+{
+    struct node* temp=head;
+    for(int i=0;i<pos-1 && temp->next!=head;i++)
+    {
+        temp=temp->next;
+    }
+    struct node* delnod=temp->next;
+    temp->next=delnod->next;
+    delnod->next->prev=temp;
+    free(delnod);
     
 }
 
@@ -21,6 +52,7 @@ void printList()
         printf("%d->",temp->data);
         temp=temp->next;
     }while(temp!=head);
+    printf("head");
 }
 
 
@@ -68,20 +100,20 @@ void main()
     printf("\n");
     
     delatstart();
-    printf("After inserting 20 at the start:\n");
+    printf("After deleting  at the start:\n");
     printList();
     printf("\n");
 
 
     
     delatend();
-    printf("After inserting 30 at the end:\n");
+    printf("After deleting at the end:\n");
     printList();
     printf("\n");
 
 
-    delanyposition(3);
-    printf("After inserting 40 at position 3:\n");
+    delatanyposition(2);
+    printf("After deleting  at position 2:\n");
     printList();
 
 }
